@@ -3,10 +3,12 @@ import com.example.lab4_grupo8.entity.Employees;
 import com.example.lab4_grupo8.repository.DepartmentsRepository;
 import com.example.lab4_grupo8.repository.EmployeesRepository;
 import com.example.lab4_grupo8.repository.JobsRepository;
-import com.example.laboratorio4.entity.Employees;
-import com.example.laboratorio4.repository.DepartmentsRepository;
-import com.example.laboratorio4.repository.EmployeesRepository;
-import com.example.laboratorio4.repository.JobsRepository;
+
+import com.example.lab4_grupo8.entity.Employees;
+import com.example.lab4_grupo8.repository.DepartmentsRepository;
+import com.example.lab4_grupo8.repository.EmployeesRepository;
+
+import com.example.lab4_grupo8.repository.JobsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +16,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.jws.WebParam;
 import javax.validation.Valid;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -33,6 +34,7 @@ public class EmployeeController {
 
     @Autowired
     DepartmentsRepository departmentsRepository;
+    private Object model;
 
     @GetMapping(value = {"","/"})
     public String listaEmployee(Model model){
@@ -43,7 +45,10 @@ public class EmployeeController {
     }
 
     @GetMapping("/new")
-    public String nuevoEmployeeForm() {
+    public String nuevoEmployeeForm(@ModelAttribute("employees") Employees employees, Model model) {
+        model.addAttribute("listaEmployee", employeesRepository.findAll());
+        model.addAttribute("listaJobs", jobsRepository.findAll());
+        model.addAttribute("listaDepartments", departmentsRepository.findAll());
         //COMPLETAR
         return "employee/Frm";
     }
@@ -81,8 +86,17 @@ public class EmployeeController {
     }
 
     @GetMapping("/edit")
-    public String editarEmployee() {
+    public String editarEmployee(@ModelAttribute("employees") Employees employees, Model model, @RequestParam("employee_id") int employee_id) {
 
+        Optional<Employees> optEmployees = employeesRepository.findById(employee_id);
+        if(optEmployees.isPresent()){
+            employees = optEmployees.get();
+            model.addAttribute("employees", employees);
+            model.addAttribute("listaEmployee", employeesRepository.findAll());
+            model.addAttribute("listaJobs", jobsRepository.findAll());
+            model.addAttribute("listaDepartments", departmentsRepository.findAll());
+        }
+        return "employee/Frm";
         //COMPLETAR
     }
 
@@ -102,9 +116,9 @@ public class EmployeeController {
     }
 
     @PostMapping("/search")
-    public String buscar (){
+    public void buscar (){
 
         //COMPLETAR
-    }
+    };
 
 }
