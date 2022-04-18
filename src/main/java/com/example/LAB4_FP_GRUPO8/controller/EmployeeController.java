@@ -1,11 +1,10 @@
-package com.example.lab4_grupo8.controller;
-import com.example.lab4_grupo8.entity.Departments;
-import com.example.lab4_grupo8.entity.Employees;
-import com.example.lab4_grupo8.entity.Jobs;
-import com.example.lab4_grupo8.repository.DepartmentsRepository;
-import com.example.lab4_grupo8.repository.EmployeesRepository;
-import com.example.lab4_grupo8.repository.JobsRepository;
-import org.hibernate.exception.DataException;
+package com.example.LAB4_FP_GRUPO8.controller;
+import com.example.LAB4_FP_GRUPO8.entity.Departments;
+import com.example.LAB4_FP_GRUPO8.entity.Employees;
+import com.example.LAB4_FP_GRUPO8.entity.Jobs;
+import com.example.LAB4_FP_GRUPO8.repository.DepartmentsRepository;
+import com.example.LAB4_FP_GRUPO8.repository.EmployeesRepository;
+import com.example.LAB4_FP_GRUPO8.repository.JobsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,15 +12,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.persistence.Embeddable;
 import javax.validation.Valid;
-import java.sql.SQLDataException;
-import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 

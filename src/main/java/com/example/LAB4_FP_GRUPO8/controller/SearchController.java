@@ -1,4 +1,4 @@
-package com.example.lab4_grupo8.controller;
+package com.example.LAB4_FP_GRUPO8.controller;
 
 
 import org.springframework.stereotype.Controller;

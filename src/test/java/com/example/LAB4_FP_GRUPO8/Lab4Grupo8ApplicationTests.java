@@ -1,4 +1,4 @@
-package com.example.lab4_grupo8;
+package com.example.LAB4_FP_GRUPO8;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

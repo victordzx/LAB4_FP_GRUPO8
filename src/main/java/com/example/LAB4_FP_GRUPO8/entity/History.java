@@ -1,4 +1,4 @@
-package com.example.lab4_grupo8.entity;
+package com.example.LAB4_FP_GRUPO8.entity;
 
 import javax.persistence.*;
 import java.sql.Date;

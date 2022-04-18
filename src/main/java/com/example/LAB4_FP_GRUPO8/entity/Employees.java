@@ -1,13 +1,11 @@
-package com.example.lab4_grupo8.entity;
+package com.example.LAB4_FP_GRUPO8.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 
 @Entity
