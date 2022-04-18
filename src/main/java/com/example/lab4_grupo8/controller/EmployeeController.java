@@ -1,5 +1,7 @@
 package com.example.lab4_grupo8.controller;
+import com.example.lab4_grupo8.entity.Departments;
 import com.example.lab4_grupo8.entity.Employees;
+import com.example.lab4_grupo8.entity.Jobs;
 import com.example.lab4_grupo8.repository.DepartmentsRepository;
 import com.example.lab4_grupo8.repository.EmployeesRepository;
 import com.example.lab4_grupo8.repository.JobsRepository;
@@ -11,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.persistence.Embeddable;
 import javax.validation.Valid;
 import java.sql.SQLDataException;
 import java.sql.SQLException;
@@ -19,6 +22,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -82,7 +86,7 @@ public class EmployeeController {
                 try{
                     employeesRepository.save(employees);
                 }catch (Exception e){
-                    model.addAttribute("msgSal","No puede ingreser un salario mayor a 8 decimales");
+                    model.addAttribute("msgSal","No puede ingresar un salario mayor a 8 decimales");
                     return "/employee/form";
                 }
 
@@ -111,8 +115,6 @@ public class EmployeeController {
         }
     }
 
-
-
     @GetMapping("/delete")
     public String borrarEmpleado(Model model,
                                  @RequestParam("id") int id,
@@ -127,10 +129,40 @@ public class EmployeeController {
         return "redirect:/employee/list";
     }
 
-  /*  @PostMapping("/search")
-    public String buscar (){
+    @PostMapping("/searchfirstname")
+    public String buscarFirstName (Model model,
+                          @RequestParam("searchText") String searchText) {
 
-        //COMPLETAR
-    }*/
+        List<Employees> employeesByFirstname = employeesRepository.findEmployeesByFirstname(searchText);
+        model.addAttribute("listaEmployee", employeesByFirstname);
+        return "employee/list";
+    }
+
+    @PostMapping("/searchlastname")
+    public String buscarLastName (Model model,
+                                   @RequestParam("searchText") String searchText) {
+
+        List<Employees> employeesByLastname = employeesRepository.findEmployeesByLastname(searchText);
+        model.addAttribute("listaEmployee", employeesByLastname);
+        return "employee/list";
+    }
+
+    @PostMapping("/searchjobs")
+    public String buscarJobs (Model model,
+                                   @RequestParam("searchText") Jobs searchText) {
+
+        List<Employees> employeesByJobs = employeesRepository.findEmployeesByJobs(searchText);
+        model.addAttribute("listaEmployee", employeesByJobs);
+        return "employee/list";
+    }
+
+    @PostMapping("/searchdepartments")
+    public String buscarDepartments (Model model,
+                                   @RequestParam("searchText") Departments searchText) {
+
+        List<Employees> employeesByDepartments = employeesRepository.findEmployeesByDepartments(searchText);
+        model.addAttribute("listaEmployee", employeesByDepartments);
+        return "employee/list";
+    }
 
 }
