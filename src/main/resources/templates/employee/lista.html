@@ -14,13 +14,13 @@
         <a class="btn btn-primary mt-4 mb-4" th:href="@{'/employee/new'}">Nuevo Empleado</a>  <!-- COMPLETAR -->
 
         <!-- BUSCADOR -->
-        <form class="row" method="post" th:action="@{/Search/busqueda}">
+        <form class="row" method="post" th:action="@{/employee}">
             <div class="container-md">
                 <div class="input-group mb-2">
                     <input name="searchField" class="input-search-bar" placeholder="Empleado a buscar ">
                     <button class="btn btn-outline-info" type="submit">Buscar</button>
-                    <a class="btn btn-outline-danger" th:href="@{'/Search/Salario'}">Limpiar</a>
-                    <a class="btn btn-outline-secondary" th:href="@{'/Search'}">Regresar</a>
+                    <a class="btn btn-outline-danger" th:href="@{'/employee'}">Limpiar</a>
+                    <a class="btn btn-outline-secondary" th:href="@{'/employee'}">Regresar</a>
 
                 </div>
             </div>
