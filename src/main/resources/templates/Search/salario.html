@@ -16,10 +16,19 @@
         <thead>
         <tr>
             <!-- COMPLETAR -->
+            <th scope="col">ID</th>
+            <th scope="col">Departamento</th>
+            <th scope="col">Promedio</th>
         </tr>
         </thead>
         <tbody>
             <!-- COMPLETAR -->
+            <tr th:each="departamento : ${reporteSalarioPromedio}">
+                <td th:text="${departamento.getDepartment_id()}"></td>
+                <td th:text="${departamento.getDepartment_name()}"></td>
+                <td th:text="${departamento.getPromedio()}"></td>
+                <td><a class="btn btn-primary" th:href="@{'/Search/listar?id='+${departamento.getDepartment_id()}}">Info</a></td>
+            </tr>
         </tbody>
     </table>
 </div>
