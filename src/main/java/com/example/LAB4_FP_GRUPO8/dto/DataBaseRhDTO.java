@@ -9,4 +9,3 @@ public interface DataBaseRhDTO {
     int getAnios();
     int getMeses();
 }
-

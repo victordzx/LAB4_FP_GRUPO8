@@ -16,6 +16,5 @@ public interface HistoryRepository extends JpaRepository<History,Integer> {
             "            inner join job_history jh on e.employee_id=jh.employee_id order by anios desc, meses desc;",
             nativeQuery = true)
     List<DataBaseRhDTO> lista_employees_time();
-    //COMPLETAR
 
 }

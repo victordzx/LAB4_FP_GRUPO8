@@ -47,7 +47,7 @@ public class SearchController {
 
             }
         }
-        //COMPLETAR
+
         return "Search/lista2";
     }
 
@@ -61,7 +61,6 @@ public class SearchController {
 
             redirectAttributes.addAttribute("searchField", searchField);
             return "redirect:/Search/Salario";
-            //COMPLETAR
         }
 
 

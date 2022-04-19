@@ -18,7 +18,6 @@ public class HistoryController {
     public String historialEmpleado(Model model){
         model.addAttribute("listaEmpleados", historyRepository.lista_employees_time());
         return "/history/lista";
-        //COMPLETAR
     }
 
 

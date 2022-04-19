@@ -13,10 +13,24 @@
         <h1>Empleados por Departamento</h1>
             <table class="table">
                 <thead>
-                <!-- COMPLETAR -->
+                <th>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Cargo</th>
+                <th>Sueldo</th>
+                <th></th>
+                </th>
                 </thead>
                 <tbody>
-                <!-- COMPLETAR -->
+                <tr th:each="employee : ${listaEmpleadosXDep}">
+                    <td th:text="${employee.getEmployee_id()}"></td>
+                    <td th:text="${employee.getFirst_name()}"></td>
+                    <td th:text="${employee.getLast_name()}"></td>
+                    <td th:text="${employee.getJob_title()}"></td>
+                    <td th:text="${employee.getSalario()}"></td>
+                    <td><a class="btn btn-primary" th:href="@{'/employee/edit?id='+${employee.getEmployee_id()}}">Editar</a></td>
+                </tr>
                 </tr>
                 </tbody>
             </table>
